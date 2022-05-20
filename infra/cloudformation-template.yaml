@@ -23,3 +23,7 @@ Resources:
       ApplicationName: !Ref GithubInfo
       Description: AWS ElasticBeanstalk Environment for GithubInfo
       TemplateName: !Ref GithubInfoConfiguration
+  GithubInfoAssetsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: githubinfo_assets
