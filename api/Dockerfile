@@ -24,6 +24,6 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
 EXPOSE 5000
-LABEL org.opencontainers.image.source=https://github.com/hassanzhd/test
+LABEL org.opencontainers.image.source=https://github.com/hassanzhd/GithubInfo
 
 CMD ["npm", "run", "start"]
