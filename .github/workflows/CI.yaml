@@ -1,0 +1,24 @@
+name: Publish API docker image to github container registry
+
+env:
+  USER_NAME: hassanzhd
+  PIPELINE_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish-api-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login docker into the github container registry
+        run: |
+          echo ${{secrets.PERSONAL_ACCESS_TOKEN}} | docker login ghcr.io -u ${{env.USER_NAME}} --password-stdin
+      - name: Build the api docker image
+        run: |
+          docker build ./api --tag ghcr.io/hassanzhd/githubinfo_api:${{PIPELINE_ID}}
+      - name: Push the api docker image
+        run: |
+          docker push ghcr.io/hassanzhd/githubinfo_api:${{PIPELINE_ID}}
