@@ -74,8 +74,8 @@ jobs:
           eb --version
 
           mkdir -p ~/.ssh/
-          ls -a ~/.ssh/
           echo "${{ secrets.EC2_KEY }}" >> ~/.ssh/GithubInfoKey.pem
+          ls -a ~/.ssh/
 
           echo "Deploy init"
           eb init -i ${{env.APP_NAME}} -p ${{env.AWS_PLATFORM}} -k ${{secrets.AWS_ID}} --region ${{env.AWS_REGION}}
