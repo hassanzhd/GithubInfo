@@ -14,6 +14,9 @@ Resources:
         - Namespace: aws:autoscaling:launchconfiguration
           OptionName: IamInstanceProfile
           Value: !Ref GithubInfoInstanceProfile
+        - Namespace: aws:autoscaling:launchconfiguration
+          OptionName: EC2KeyName
+          Value: GithubInfoKey
   GithubInfoEnvironment:
     Type: AWS::ElasticBeanstalk::Environment
     Properties:
