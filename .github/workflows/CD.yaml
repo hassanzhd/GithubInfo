@@ -73,7 +73,7 @@ jobs:
           pip install awsebcli --upgrade
           eb --version
 
-          echo "${{ secrets.EC2_Key }}" >> .ssh/GithubInfoKey.pem
+          echo "${{ secrets.EC2_Key }}" >> ~/.ssh/GithubInfoKey.pem
 
           echo "Deploy init"
           eb init -i ${{env.APP_NAME}} -p ${{env.AWS_PLATFORM}} -k ${{secrets.AWS_ID}} --region ${{env.AWS_REGION}}
