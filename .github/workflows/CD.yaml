@@ -28,6 +28,7 @@ jobs:
           docker push ghcr.io/hassanzhd/githubinfo_api:${{env.PIPELINE_ID}}
 
   create-eb-version:
+    needs: [publish-api-image]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -48,7 +49,7 @@ jobs:
           aws elasticbeanstalk create-application-version --application-name ${{env.APP_NAME}} --version-label $AWS_VERSION_LABEL --region ${{env.AWS_REGION}} --source-bundle S3Bucket=${{env.S3_BUCKET}},S3Key=${S3_KEY} --auto-create-application
 
   deploy-aws:
-    needs: [create_eb_version]
+    needs: [create-eb-version]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
