@@ -22,11 +22,10 @@ jobs:
           echo ${{secrets.PERSONAL_ACCESS_TOKEN}} | docker login ghcr.io -u ${{env.USER_NAME}} --password-stdin
       - name: Build the api docker image
         run: |
-          docker build ./api --tag ghcr.io/hassanzhd/githubinfo_api:${{env.PIPELINE_ID}}
+          docker build ./api --tag ghcr.io/hassanzhd/githubinfo_api
       - name: Push the api docker image
         run: |
-          docker push ghcr.io/hassanzhd/githubinfo_api:${{env.PIPELINE_ID}}
-
+          docker push ghcr.io/hassanzhd/githubinfo_api
   create-eb-version:
     needs: [publish-api-image]
     runs-on: ubuntu-latest
