@@ -78,6 +78,7 @@ jobs:
           ls -a ~/.ssh/
 
           echo "Deploy init"
+          eb list --region us-east-1
           eb init -i ${{env.APP_NAME}} -p ${{env.AWS_PLATFORM}} -k GithubInfoKey --region ${{env.AWS_REGION}}
           eb deploy ${{env.APP_NAME}} --version ${AWS_VERSION_LABEL}
           echo "Deploy finished"
