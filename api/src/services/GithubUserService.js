@@ -1,4 +1,6 @@
 import fetch from "node-fetch";
+import { Profile } from "../entities/profile.entity";
+import { Repo } from "../entities/repo.entity";
 
 export class GitHubUserService {
   constructor() {
@@ -25,7 +27,7 @@ export class GitHubUserService {
       throw new Error(data.message);
     }
 
-    return data;
+    return new Profile(data);
   }
 
   async getUserRepos(__username) {
@@ -40,6 +42,6 @@ export class GitHubUserService {
       throw new Error(data.message);
     }
 
-    return data;
+    return data.map((repo) => new Repo(repo));
   }
 }
