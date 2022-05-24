@@ -27,4 +27,19 @@ export class GitHubUserService {
 
     return data;
   }
+
+  async getUserRepos(__username) {
+    const githubResponse = await fetch(
+      `https://api.github.com/users/${__username}/repos`,
+      { "User-Agent": "hassanzhd" }
+    );
+
+    const data = await githubResponse.json();
+
+    if (!githubResponse.ok) {
+      throw new Error(data.message);
+    }
+
+    return data;
+  }
 }

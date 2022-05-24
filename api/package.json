@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/app.js",
-    "start:dev": "npm run build && nodemon dist/app.js",
+    "start:dev": "nodemon --exec babel-node src/app.js",
     "build": "babel src --out-dir dist"
   },
   "keywords": [],
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.0",
+    "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.0",
     "nodemon": "^2.0.16"
   }
