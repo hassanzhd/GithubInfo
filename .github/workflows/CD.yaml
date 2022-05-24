@@ -3,8 +3,9 @@ name: Publish API docker image to github container registry
 env:
   USER_NAME: hassanzhd
   PIPELINE_ID: ${GITHUB_RUN_ID}-${GITHUB_RUN_NUMBER}
-  APP_NAME: GithubInfoStack-GithubInfo-1RC2J2SU6EGBP
-  S3_BUCKET: githubinfoassets
+  APP_NAME: ${{ secrets.APP_NAME }}
+  S3_BUCKET: ${{ secrets.S3_BUCKET }}
+  ENV_NAME: ${{ secrets.ENV_NAME }}
   AWS_REGION: us-east-1
   AWS_PLATFORM: Docker
 
@@ -74,10 +75,8 @@ jobs:
 
           mkdir -p ~/.ssh/
           echo "${{ secrets.EC2_KEY }}" >> ~/.ssh/GithubInfoKey.pem
-          ls -a ~/.ssh/
 
           echo "Deploy init"
           eb init -i ${{env.APP_NAME}} -p ${{env.AWS_PLATFORM}} -k GithubInfoKey --region ${{env.AWS_REGION}}
-          eb list --region us-east-1
-          eb deploy Gith-Gith-CXAOCGVBGMSD --version ${AWS_VERSION_LABEL}
+          eb deploy ${{ env.ENV_NAME }} --version ${AWS_VERSION_LABEL}
           echo "Deploy finished"
