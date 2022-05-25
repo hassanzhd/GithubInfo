@@ -1,19 +1,32 @@
 import express from "express";
+import { engine } from "express-handlebars";
+import path from "path";
 import { GitHubUserService } from "./services/GithubUserService";
 
 const PORT = 5000;
 const app = express();
 
-app.get("/user/:username", async (request, response) => {
-  const { username } = request.params;
+app.use(express.json());
+app.use(express.urlencoded({ extended: "false" }));
+app.use(express.static(path.join(__dirname, "public")));
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
+
+app.get("/", (request, response) => {
+  response.render("home");
+});
+
+app.get("/user", async (request, response) => {
+  const { q: username } = request.query;
 
   try {
     const service = GitHubUserService.getInstance();
     const profileData = await service.getUserProfile(username);
     const repoData = await service.getUserRepos(username);
-    response.json({ profileData, repoData });
+    response.render("user", { profileData, repoData });
   } catch (error) {
-    response.status(404).json({ message: error.message });
+    response.render("error", { message: error.message });
   }
 });
 

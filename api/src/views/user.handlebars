@@ -1,0 +1,47 @@
+<body>
+      <div id="heading">
+        <h1>
+          <a href="/">
+            GithubInfo.
+          </a>
+        </h1>
+      </div>
+      <div id="main-container">
+        <div id="avatar">
+          <img src={{ profileData.avatarImageURL }} / >
+        </div>
+        <div class="details">
+          <div class="heading">
+            <h1>Profile details:</h1>
+          </div>
+          <div class="information">
+            <p>Username: {{ profileData.userName }}</p>
+            <p>Full name: {{ profileData.fullName }}</p>
+            <p>Location: {{ profileData.location }}</p>
+            <p>Followers: {{ profileData.followers }}</p>
+            <p>Following: {{ profileData.following }}</p>
+            <p>Joined on: {{ profileData.joiningDate }}</p>
+          </div>
+        </div>
+      </div>
+      <div id="repositories">
+        <div class="repo-heading">
+          <h1>Repositories:</h1>
+        </div>
+        <div class="repo-grid">
+          {{#each repoData }}
+          <div class="repository">
+            <h1>
+              <a href={{ this.URL }}>
+                {{ this.name }}
+              </a>
+            </h1>
+            <p>Stars: {{ this.stars }}</p>
+            <p>Created at: {{ this.creationDate }}</p>
+            <p>Description: {{ this.description }}</p>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </body>

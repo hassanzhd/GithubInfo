@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto";
+}
+
+#container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#search-form {
+  margin-top: 10px;
+}
+
+#search-form input {
+  background-color: #ffffff;
+  width: 350px;
+  height: 50px;
+  margin: 10px;
+  padding: 0 20px;
+  border-radius: 25px;
+  border: 1px solid gray;
+  font-size: 1em;
+}
+
+#search-form button {
+  background-color: black;
+  color: white;
+  width: 100px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 1em;
+}
+
+#search-form button:hover {
+  background-color: gray;
+  color: black;
+  transition: 0.5s;
+  border: 1px solid gray;
+}
+
+#heading {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+#heading a {
+  color: black;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px 20px 0px;
+}
+
+#main-container .details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#main-container .heading,
+#main-container .information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-container .information {
+  margin-top: 10px;
+}
+
+#avatar {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+#avatar img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+#repositories {
+  margin: 20px;
+}
+
+.repo-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px;
+}
+
+.repo-grid .repository {
+  margin-top: 10px;
+}
+
+.repo-grid .repository h1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.repo-grid .repository h1 a:hover {
+  color: gray;
+  transition: 0.2s;
+}
+
+#error-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#error-container h1 {
+  margin-bottom: 10px;
+}
+
+#error-container h1 a {
+  color: black;
+}
+
+#error-container p {
+  font-size: 1em;
+}
+
+@media (max-width: 600px) {
+  #search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 920px) {
+  .repo-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
