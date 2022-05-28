@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node src/app.js",
     "build": "babel src --out-dir dist --copy-files"
