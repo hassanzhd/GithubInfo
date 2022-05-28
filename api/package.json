@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node dist/app.js",
     "start:dev": "nodemon --exec babel-node src/app.js",
     "build": "babel src --out-dir dist --copy-files"
@@ -24,6 +24,7 @@
     "@babel/core": "^7.18.0",
     "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.0",
+    "jest": "^28.1.0",
     "nodemon": "^2.0.16"
   }
 }
